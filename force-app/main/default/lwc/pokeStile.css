@@ -1,0 +1,18 @@
+:host{
+    max-width: 225px;
+    display: block;
+}
+
+p.description{
+    min-width: 60px;
+}
+
+img.pokemon{
+    height: 100px;
+    border-radius: 1.5rem;
+    border: 1px solid rgb(221, 219, 218);
+}
+
+.align-right{
+    float:right;
+}

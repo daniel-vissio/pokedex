@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title={pokemon.Name} icon-name="utility:animal_and_nature">
+        <lightning-button label="View Details" slot="actions"></lightning-button>
+        <!-- body start -->
+
+        <p class="slds-p-horizontal_small">{pokemon.Description}</p>
+        <img
+            class="pokemon slds-align_absolute-center slds-var-m-around_medium"
+            src={pokemon.Image_URL_c}
+            alt={pokemon.Name}
+        />
+        <p class="slds-p-horizontal_small">{pokemon.Location__c}</p>
+        <!-- body end -->
+
+    </lightning-card>
+</template>
