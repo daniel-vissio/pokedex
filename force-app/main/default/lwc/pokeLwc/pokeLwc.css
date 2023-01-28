@@ -1,0 +1,12 @@
+
+.pokemon-card{
+    width: 200px;
+    margin: 10px;
+}
+h1{
+    text-transform: capitalize;
+}
+.details > p{
+    margin: 0 10%;
+    text-align: start;
+}

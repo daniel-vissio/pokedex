@@ -1,10 +1,20 @@
-import { LightningElement } from 'lwc';
+import { LightningElement, api } from 'lwc';
+import { NavigationMixin } from 'lightning/navigation';
 
-export default class PokeLwc extends LightningElement {
-    pokemon = {
-        Name: "Pikachu",
-        Description: "Rata trueno",
-        Image_URL_c: "https://pokefanaticos.com/pokedex/assets/images/pokemon_imagenes/1.png",
-        Location__c: "Casa de pablito"
-    };
+
+export default class PokeLwc extends NavigationMixin (LightningElement) {
+    @api pokemon;
+
+
+    navigateToRecordViewPage() {
+        // View a custom object record.
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: this.pokemon.Id,
+                objectApiName: 'Pokemon__c', // objectApiName is optional
+                actionName: 'view'
+            }
+        });
+    }
 }

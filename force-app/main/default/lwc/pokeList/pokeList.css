@@ -1,0 +1,12 @@
+lightning-input{
+    width: 900;
+}
+
+.pokemon-list-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.pokemon-card .slds-card{
+    width: 200px;
+}

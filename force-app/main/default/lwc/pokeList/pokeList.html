@@ -1,10 +1,39 @@
 <template>
-    <template for:each={pokemonList} for:item="pokemon">
-        <div key={pokemon.Id}>
-            <c-pokemon-lwc>
-
-            </c-pokemon-lwc>
+    <div class="slds-p-around_medium lgc-bg">
+        <lightning-input
+        class="slds-var-m-left_large"
+        type="text" label="Enter Pokemon Name" placeholder="Pokemon" onchange={handleInputChange}></lightning-input>
+        
+            <lightning-combobox
+            name="Generation"
+            label="Generation"
+            value={value}
+            placeholder="Filtrar por Generación"
+            options={generationOptions}
+            onchange={handleGenerationChange}
+            class="slds-var-m-left_large"
+        ></lightning-combobox>
+        
+        <lightning-combobox
+        name="Type"
+        label="Type"
+        value={value}
+        placeholder="Filtrar por tipo"
+        options={typeOptions}
+        onchange={handleTypeChange}
+        class="slds-var-m-left_large"
+    ></lightning-combobox>
+        <div class="slds-align_absolute-center">
+        <div class="slds-grid slds-wrap slds-grid_align-spread pokemon-list-container">
+            <template if:true={pokemonList}>
+                <template for:each={pokemonList} for:item="poke">
+                    <div key={poke.Id}>
+                        <c-poke-lwc pokemon={poke} class="pokemon-card">
+                        </c-poke-lwc>
+                    </div>
+                </template>
+            </template>
+        </div>
+        </div>
     </div>
-    </template>
-
 </template>

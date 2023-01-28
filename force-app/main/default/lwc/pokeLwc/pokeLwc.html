@@ -1,16 +1,18 @@
 <template>
-    <lightning-card title={pokemon.Name} icon-name="utility:animal_and_nature">
-        <lightning-button label="View Details" slot="actions"></lightning-button>
-        <!-- body start -->
-
-        <p class="slds-p-horizontal_small">{pokemon.Description}</p>
-        <img
-            class="pokemon slds-align_absolute-center slds-var-m-around_medium"
-            src={pokemon.Image_URL_c}
-            alt={pokemon.Name}
-        />
-        <p class="slds-p-horizontal_small">{pokemon.Location__c}</p>
-        <!-- body end -->
-
-    </lightning-card>
+    <div class="slds-align_absolute-center">
+        <lightning-card class="pokemon-card" icon-name="utility:animal_and_nature">
+             <h1 slot="title"><b>#{pokemon.ExtId__c}</b> {pokemon.Name}</h1>
+            <div class="slds-align_absolute-center">
+                <img
+                    class="pokemon slds-align_absolute-center"
+                    src={pokemon.ImageUrl__c}
+                    alt={pokemon.Name}
+                />
+            </div>
+            <div class="details">
+                <p ><b>Type: </b>{pokemon.PokeType__c}</p>
+            </div>
+            <lightning-button  label="View Details" slot="footer" onclick={navigateToRecordViewPage}></lightning-button>
+        </lightning-card>
+    </div>
 </template>
