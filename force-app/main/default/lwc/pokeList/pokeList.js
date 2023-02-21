@@ -16,37 +16,37 @@ export default class PokeList extends LightningElement {
     }
 
 	typeOptions = [
-		{ label : 'Todos', value: ''},
-		{ label : 'Bug (Bicho)', value: 'Bug'},
-		{ label : 'Dark (Oscuro)', value: 'Dark'},
-		{ label : 'Dragon (Dragón)', value: 'Dragon'},
-		{ label : 'Electric (Eléctrico)', value: 'Electric'},
-		{ label : 'Fairy (Hada)', value: 'Fairy'},
-		{ label : 'Fighting (Luchador)', value: 'Fighting'},
-		{ label : 'Fire (Fuego)', value: 'Fire'},
-		{ label : 'Flying (Volador)', value: 'Flying'},
-		{ label : 'Ghost (Fantasma)', value: 'Ghost'},
-		{ label : 'Grass (Planta)', value: 'Grass'},
-		{ label : 'Ground (Tierra)', value: 'Ground'},
-		{ label : 'Ice (Hielo)', value: 'Ice'},
-		{ label : 'Normal (Normal)', value: 'Normal'},
-		{ label : 'Poison (Veneno)', value: 'Poison'},
-		{ label : 'Psychic (Psíquico)', value: 'Psychic'},
-		{ label : 'Rock (Roca)', value: 'Rock'},
-		{ label : 'Steel (Acero)', value: 'Steel'},
-		{ label : 'Water (Agua)', value: 'Water'}
+		{ label : 'All', value: ''},
+		{ label : 'Bug', value: 'Bug'},
+		{ label : 'Dark', value: 'Dark'},
+		{ label : 'Dragon', value: 'Dragon'},
+		{ label : 'Electric', value: 'Electric'},
+		{ label : 'Fairy', value: 'Fairy'},
+		{ label : 'Fighting', value: 'Fighting'},
+		{ label : 'Fire', value: 'Fire'},
+		{ label : 'Flying', value: 'Flying'},
+		{ label : 'Ghost', value: 'Ghost'},
+		{ label : 'Grass', value: 'Grass'},
+		{ label : 'Ground', value: 'Ground'},
+		{ label : 'Ice', value: 'Ice'},
+		{ label : 'Normal', value: 'Normal'},
+		{ label : 'Poison', value: 'Poison'},
+		{ label : 'Psychic', value: 'Psychic'},
+		{ label : 'Rock', value: 'Rock'},
+		{ label : 'Steel', value: 'Steel'},
+		{ label : 'Water', value: 'Water'}
 	]
     
 	generationOptions = [
-        { label: 'Todas', value: ''},
-        { label: 'Generación 1', value: '1' },
-        { label: 'Generación 2', value: '2' },
-        { label: 'Generación 3', value: '3' },
-        { label: 'Generación 4', value: '4' },
-        { label: 'Generación 5', value: '5' },
-        { label: 'Generación 6', value: '6' },
-        { label: 'Generación 7', value: '7' },
-        { label: 'Generación 8', value: '8' }
+        { label: 'All', value: ''},
+        { label: 'Generatión 1', value: '1' },
+        { label: 'Generatión 2', value: '2' },
+        { label: 'Generatión 3', value: '3' },
+        { label: 'Generatión 4', value: '4' },
+        { label: 'Generatión 5', value: '5' },
+        { label: 'Generatión 6', value: '6' },
+        { label: 'Generatión 7', value: '7' },
+        { label: 'Generatión 8', value: '8' }
 ]
 
 

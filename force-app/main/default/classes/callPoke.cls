@@ -4,27 +4,12 @@ public with sharing class callPoke {
     public static Pokemon__c getCallPoke(Integer pokeNumber) {
 
         List <PokemonSkill__c> skillDB = [SELECT Id, Name FROM PokemonSkill__c];
-
-        String  pokeName;
-        Integer pokeId;
-        Integer  pokeHeight;
-        Integer  pokeWeight;
-        Integer pokeHp;
-        String  pokeImage;
-        Integer PokeDef;
-        String pokeSkill;
-        Integer pokeAttack;
-        Integer pokeSpeed;
-        String pokeType;
         //Instancio y accedo a los campos
         Pokemon__c pokemon = new Pokemon__c();
-        
-        Http http = new Http();
-        HttpRequest request = new HttpRequest();
-        request.setEndpoint('https://pokeapi.co/api/v2/pokemon/'+ pokeNumber);
-        request.setMethod('GET');
-        HttpResponse resp = http.send(request);
-        if(resp.getStatusCode()== 200){
+        HttpResponse resp = endPointRequest(pokeNumber);
+
+
+        if(resp.getStatusCode() == 200){
             Map<String, Object> result =(Map<String, Object>)JSON.deserializeUntyped(resp.getBody());
 
             List<Object> abilities = (List<Object>) result.get('abilities');
@@ -54,67 +39,55 @@ public with sharing class callPoke {
             Map<String,Object> pokeTypes = (Map<String,Object>) types[0];
             Map<String,Object> nameType = (Map<String,Object>) pokeTypes.get('type');
             
-
-
-
-            pokeName   = (String) result.get('name');
-            pokeId     = (Integer) result.get('id');
-            pokeHeight = (Integer) result.get('height');
-			pokeWeight = (Integer) result.get('weight');
-            pokeHp     = (Integer) php.get('base_stat');
-            pokeDef    = (Integer) pdefense.get('base_stat');
-            pokeAttack = (Integer) pAttack.get('base_stat');
-            pokeSpeed  = (Integer) pSpeed.get('base_stat');
-            pokeType   = (String)  nameType.get('name');
-
-            pokeSkill  = (String) skill1.get('name');
-            pokeImage   = (String) pokeSprites.get('front_default');
-
+            pokemon.name         = (String) result.get('name');
+            pokemon.ExtId__c     = (Integer) result.get('id');
+            pokemon.Height__c    = (Integer) result.get('height');
+			pokemon.Weight__c    = (Integer) result.get('weight');
+            pokemon.PokeHP__c    = (Integer) php.get('base_stat');
+            pokemon.Defense__c   = (Integer) pdefense.get('base_stat');
+            pokemon.Attack__c    = (Integer) pAttack.get('base_stat');
+            pokemon.Speed__c     = (Integer) pSpeed.get('base_stat');
+            pokemon.PokeType__c  = (String)  nameType.get('name');
+            pokemon.ImageUrl__c  = (String) pokeSprites.get('front_default');
+            //pokeSkill  = (String) skill1.get('name');
 
             for(PokemonSkill__c a : skillDB){
-                if (a.name == pokeSkill) {
+                if (a.name == (String) skill1.get('name')) {
                     pokemon.Skills__c = a.id;
                 }
             }
         }
-
-
-
-
-        pokemon.name        = pokeName;
-        pokemon.ExtId__c    = pokeId;
-        pokemon.Height__c   = pokeHeight;
-        pokemon.Weight__c   = pokeWeight;
-        pokemon.PokeHP__c   = pokeHp;
-        pokemon.ImageUrl__c = pokeImage;
-        pokemon.Defense__c  = pokeDef;
-        pokemon.Attack__c   = pokeAttack;
-        pokemon.Speed__c    = pokeSpeed;
-        pokemon.PokeType__c = pokeType;
-        
-
-
         return pokemon;
-        
-		
+    }
+
+    public static HttpResponse endPointRequest(Integer pokeNumber){
+        Http http = new Http();
+        HttpRequest request = new HttpRequest();
+        request.setEndpoint('https://pokeapi.co/api/v2/pokemon/'+ pokeNumber);
+        request.setMethod('GET');
+        HttpResponse resp = http.send(request);
+            return resp;
         
     }
-    //Insert One
+
+
+    //Insert One Pokemon
     public static void insertPokemon(Integer i) {
         Pokemon__c poke = getCallPoke(i);
         insert poke;
-            }
-    //Insert Multi
+    }
+
+    //Insert Multi Pokemon
     public static void getbash() {
         List<Pokemon__c> pokemons = new List<Pokemon__c>();
-        for(Integer i =1 ;i<=40;i++){
+        for(Integer i =601 ;i<=602;i++){
             Pokemon__c pokemon = getCallPoke(i);
             pokemons.add(pokemon);
         }
         insert pokemons;
-
     }
-    //Delete
+
+    //Delete all Pokemon
     public static void deletePokemons(){
         
         delete [SELECT Id FROM Pokemon__c];

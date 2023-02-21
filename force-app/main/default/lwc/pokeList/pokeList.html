@@ -1,5 +1,11 @@
 <template>
     <div class="slds-p-around_medium lgc-bg">
+        <template if:true={pokemonList}>
+            <div class="slds-box">
+                <p>Pokemons registereds: {pokemonList.length}</p>
+            </div>
+        </template>
+
         <lightning-input
         class="slds-var-m-left_large"
         type="text" label="Enter Pokemon Name" placeholder="Pokemon" onchange={handleInputChange}></lightning-input>
@@ -8,17 +14,17 @@
             name="Generation"
             label="Generation"
             value={value}
-            placeholder="Filtrar por Generación"
+            placeholder="Generation"
             options={generationOptions}
             onchange={handleGenerationChange}
             class="slds-var-m-left_large"
-        ></lightning-combobox>
+            ></lightning-combobox>
         
         <lightning-combobox
         name="Type"
         label="Type"
         value={value}
-        placeholder="Filtrar por tipo"
+        placeholder="Type"
         options={typeOptions}
         onchange={handleTypeChange}
         class="slds-var-m-left_large"
